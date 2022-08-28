@@ -1,0 +1,4 @@
+git+https://github.com/hockbhmv/pyropatch@frwd 
+motor==2.5.1
+TgCrypto
+Dnspython
