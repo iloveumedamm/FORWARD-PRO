@@ -36,10 +36,10 @@
     },
     "DATABASE_NAME": {
       "description": "Type Of filters (document , audio , photo , video , animation)",
-      "value": "document"
+      "required": false
     },
-    "DATABASE_URI": {
-      "description": "Pyrogram string Seccion - https://replit.com/@JijinR/PyroSessionString?v=1",
+    "DATABASE": {
+      "description": "mongodb https://cloud.mongodb.com", 
       "value": ""
     }
   },
