@@ -1,13 +1,15 @@
-echo "Cloning Repo...."
-if [ -z $BRANCH ]
+if [ -z $UPSTREAM_REPO ]
 then
-  echo "Cloning main branch...."
-  git clone https://github.com/SadKidBGMZ/fwdbot /fwdbot 
+  echo "Cloning main Repository"
+  git clone https://github.com/SadKidBGMZ/fwdbot.git /fedbot
 else
-  echo "Cloning $BRANCH branch...."
-  git clone https://github.com/SadKidBGMZ/fwdbot -b $BRANCH /fwdbot
+  echo "Cloning Custom Repo from $UPSTREAM_REPO "
+  git clone https://github.com/SadKidBGMZ/fwdbot
 fi
-cd /fwdbot 
+ls
+cd SadKidBGMZ/fwdbot
+ls
+$PWD
 pip3 install -U -r requirements.txt
 echo "Starting Bot...."
-python3 main.py 
+python3 bot.py
