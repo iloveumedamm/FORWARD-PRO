@@ -1,7 +1,7 @@
 if [ -z $UPSTREAM_REPO ]
 then
   echo "Cloning main Repository"
-  git clone https://github.com/SadKidBGMZ/fwdbot.git /fedbot
+  git clone https://github.com/SadKidBGMZ/fwdbot.git /fwdbot
 else
   echo "Cloning Custom Repo from $UPSTREAM_REPO "
   git clone https://github.com/SadKidBGMZ/fwdbot
