@@ -8,10 +8,12 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaDocument
 
 main_buttons = [[
-        InlineKeyboardButton('❗️Help', callback_data='help') 
-        ],[
         InlineKeyboardButton('📜 Support Group', url='https://t.me/venombotupdates'),
         InlineKeyboardButton('📢 Update Channel ', url='https://t.me/venombotsupport')
+        ],[
+        InlineKeyboardButton('❗️Help', callback_data='help') 
+        ],[
+        
 ]]
 
 #===================Start Function===================#
