@@ -2,7 +2,7 @@ from os import environ
 from config import Config
 import motor.motor_asyncio
  
-class Database:
+class db:
     
     def __init__(self, uri, database_name):
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
