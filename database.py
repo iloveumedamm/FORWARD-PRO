@@ -2,7 +2,10 @@ from os import environ
 from config import Config
 import motor.motor_asyncio
  
-class db:
+
+db = Database(Config.DATABASE_URI, Config.DATABASE_NAME)
+
+class Database:
     
     def __init__(self, uri, database_name):
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
@@ -158,4 +161,3 @@ class db:
     async def get_all_frwd(self):
        return self.nfy.find({})
      
-db = Database(Config.DATABASE_URI, Config.DATABASE_NAME)
