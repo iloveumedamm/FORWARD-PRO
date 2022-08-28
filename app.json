@@ -11,8 +11,8 @@
     "bot"
   ],
   "success_url": "https://t.me/DForDarkAngel",
-  "website": "https://github.com/Jijinr/Frwdit-V2",
-  "repository": "https://github.com/Jijinr/Frwdit-V2",
+  "website": "https://github.com/SadKidBGMZ/fwdbot",
+  "repository": "https://github.com/SadKidBGMZ/fwdbot",
   "env": {
     "API_ID": {
       "description": "Get this value from https://my.telegram.org or @UseTGSBot",
