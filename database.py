@@ -3,7 +3,7 @@ from config import Config
 import motor.motor_asyncio
  
 
-db = Database(Config.DATABASE_URI, Config.DATABASE_NAME)
+db = database(Config.DATABASE_URI, Config.DATABASE_NAME)
 
 class Database:
     
