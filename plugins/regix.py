@@ -106,7 +106,7 @@ async def pub_(bot, message):
         await edit(m, 'ᴄᴏᴍᴘʟᴇᴛᴇᴅ', "completed", sts) 
         await stop(client, user)
             
-
+async def copy(bot, msg, m, sts):
    try:                                  
      if msg.get("media") and msg.get("caption"):
         await bot.send_cached_media(
