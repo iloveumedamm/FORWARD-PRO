@@ -1,4 +1,4 @@
-pyropatch
+git+https://github.com/tgaibotz/pyropatch@frwd
 motor
 TgCrypto
 Dnspython
