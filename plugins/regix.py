@@ -24,37 +24,37 @@ async def pub_(bot, message):
     temp.CANCEL[user] = False
     frwd_id = message.data.split("_")[2]
     if temp.lock.get(user) and str(temp.lock.get(user))=="True":
-      return await message.answer("please wait until previous task complete", show_alert=True)
+        return await message.answer("please wait until the previous task completes", show_alert=True)
     sts = STS(frwd_id)
     if not sts.verify():
-      await message.answer("your are clicking on my old button", show_alert=True)
-      return await message.message.delete()
+        await message.answer("you are clicking on my old button", show_alert=True)
+        return await message.message.delete()
     i = sts.get(full=True)
     if i.TO in temp.IS_FRWD_CHAT:
-      return await message.answer("In Target chat a task is progressing. please wait until task complete", show_alert=True)
+        return await message.answer("In Target chat a task is progressing. please wait until the task completes", show_alert=True)
     m = await msg_edit(message.message, "<code>verifying your data's, please wait.</code>")
     _bot, caption, forward_tag, data, protect, button = await sts.get_data(user)
     if not _bot:
-      return await msg_edit(m, "<code>You didn't added any bot. Please add a bot using /settings !</code>", wait=True)
+        return await msg_edit(m, "<code>You didn't add any bot. Please add a bot using /settings !</code>", wait=True)
     try:
-      client = await bot.start_clone_bot(CLIENT.client(_bot))
+        client = await bot.start_clone_bot(CLIENT.client(_bot))
     except Exception as e:  
-      return await m.edit(e)
+        return await m.edit(e)
     await msg_edit(m, "<code>processing..</code>")
     try: 
-       await client.get_messages(sts.get("FROM"), sts.get("limit"))
+        await client.get_messages(sts.get("FROM"), sts.get("limit"))
     except:
-       await msg_edit(m, f"**Source chat may be a private channel / group. Use userbot (user must be member over there) or  if Make Your [Bot](t.me/{_bot['username']}) an admin over there**", retry_btn(frwd_id), True)
-       return await stop(client, user)
+        await msg_edit(m, f"**Source chat may be a private channel / group. Use userbot (user must be a member over there) or if Make Your [Bot](t.me/{_bot['username']}) an admin over there**", retry_btn(frwd_id), True)
+        return await stop(client, user)
     try:
-       k = await client.send_message(i.TO, "Testing")
-       await k.delete()
+        k = await client.send_message(i.TO, "Testing")
+        await k.delete()
     except:
-       await msg_edit(m, f"**Please Make Your [UserBot / Bot](t.me/{_bot['username']}) Admin In Target Channel With Full Permissions**", retry_btn(frwd_id), True)
-       return await stop(client, user)
+        await msg_edit(m, f"**Please Make Your [UserBot / Bot](t.me/{_bot['username']}) Admin In Target Channel With Full Permissions**", retry_btn(frwd_id), True)
+        return await stop(client, user)
     temp.forwardings += 1
     await db.add_frwd(user)
-    await send(client, user, "<b>🧡 ғᴏʀᴡᴀʀᴅɪɴɢ sᴛᴀʀᴛᴇᴅ</b>")
+    await send(client, user, "<b>🧡 Forwarding started</b>")
     sts.add(time=True)
     sleep = 1 if _bot['is_bot'] else 10
     await msg_edit(m, "<code>processing...</code>") 
