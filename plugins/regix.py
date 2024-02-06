@@ -61,6 +61,8 @@ async def pub_(bot, message):
     temp.IS_FRWD_CHAT.append(i.TO)
     temp.lock[user] = locked = True
     if locked:
+        # Your further code here
+
         try:
           MSG = []
           pling=0
@@ -106,31 +108,6 @@ async def pub_(bot, message):
         await edit(m, 'ᴄᴏᴍᴘʟᴇᴛᴇᴅ', "completed", sts) 
         await stop(client, user)
             
-async def copy(bot, msg, m, sts):
-   try:                                  
-     if msg.get("media") and msg.get("caption"):
-        await bot.send_cached_media(
-              chat_id=sts.get('TO'),
-              file_id=msg.get("media"),
-              caption=msg.get("caption"),
-              reply_markup=msg.get('button'),
-              protect_content=msg.get("protect"))
-     else:
-        await bot.copy_message(
-              chat_id=sts.get('TO'),
-              from_chat_id=sts.get('FROM'),    
-              caption=msg.get("caption"),
-              message_id=msg.get("msg_id"),
-              reply_markup=msg.get('button'),
-              protect_content=msg.get("protect"))
-   except FloodWait as e:
-     await edit(m, 'ᴘʀᴏɢʀᴇssɪɴɢ', e.value, sts)
-     await asyncio.sleep(e.value)
-     await edit(m, 'ᴘʀᴏɢʀᴇssɪɴɢ', 5, sts)
-     await copy(bot, msg, m, sts)
-   except Exception as e:
-     print(e)
-     sts.add('deleted')
         
 async def forward(bot, msg, m, sts, protect):
    try:                             
