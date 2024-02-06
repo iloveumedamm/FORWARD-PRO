@@ -1,5 +1,5 @@
 pyropatch
-motor==3.0.0
+motor==3.1.0
 TgCrypto
 Dnspython
 
