@@ -43,7 +43,7 @@ async def run(bot, message):
         await message.reply(Translation.CANCEL)
         return 
     if fromid.text and not fromid.forward_date:
-        regex = re.compile("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
+        regex = re.compile(r"(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
         match = regex.match(fromid.text.replace("?single", ""))
         if not match:
             return await message.reply('Invalid link')
