@@ -59,31 +59,20 @@ async def unequify(client, message):
    try:
      await sts.edit(Translation.DUPLICATE_TEXT.format(total, deleted, "ᴘʀᴏɢʀᴇssɪɴɢ"), reply_markup=CANCEL_BTN)
      async for message in bot.search_messages(chat_id=chat_id, filter="document"):
-        if temp.CANCEL.get(user_id) == True:
-           await sts.edit(Translation.DUPLICATE_TEXT.format(total, deleted, "ᴄᴀɴᴄᴇʟʟᴇᴅ"), reply_markup=COMPLETED_BTN)
-           return await bot.stop()
-        file = message.document
-        file_id = unpack_new_file_id(file.file_id) 
-        if file_id in MESSAGES:
-           DUPLICATE.append(message.id)
-        else:
-           MESSAGES.append(file_id)
-        total += 1
-        if total %10000 == 0:
-           await sts.edit(Translation.DUPLICATE_TEXT.format(total, deleted, "ᴘʀᴏɢʀᴇssɪɴɢ"), reply_markup=CANCEL_BTN)
-        if len(DUPLICATE) >= 100:
-           await bot.delete_messages(chat_id, DUPLICATE)
-           deleted += 100
-           await sts.edit(Translation.DUPLICATE_TEXT.format(total, deleted, "ᴘʀᴏɢʀᴇssɪɴɢ"), reply_markup=CANCEL_BTN)
-           DUPLICATE = []
-     if DUPLICATE:
+    if temp.CANCEL.get(user_id) == True:
+        await sts.edit(Translation.DUPLICATE_TEXT.format(total, deleted, "ᴄᴀɴᴄᴇʟʟᴇᴅ"), reply_markup=COMPLETED_BTN)
+        return await bot.stop()
+    file = message.document
+    file_id = file.file_id  # Use an alternative way to get the file ID
+    if file_id in MESSAGES:
+        DUPLICATE.append(message.id)
+    else:
+        MESSAGES.append(file_id)
+    total += 1
+    if total % 10000 == 0:
+        await sts.edit(Translation.DUPLICATE_TEXT.format(total, deleted, "ᴘʀᴏɢʀᴇssɪɴɢ"), reply_markup=CANCEL_BTN)
+    if len(DUPLICATE) >= 100:
         await bot.delete_messages(chat_id, DUPLICATE)
-        deleted += len(DUPLICATE)
-   except Exception as e:
-       temp.lock[user_id] = False 
-       await sts.edit(f"**ERROR**\n`{e}`")
-       return await bot.stop()
-   temp.lock[user_id] = False
-   await sts.edit(Translation.DUPLICATE_TEXT.format(total, deleted, "ᴄᴏᴍᴘʟᴇᴛᴇᴅ"), reply_markup=COMPLETED_BTN)
-   await bot.stop()
-   
+        deleted += 100
+        await sts.edit(Translation.DUPLICATE_TEXT.format(total, deleted, "ᴘʀᴏɢʀᴇssɪɴɢ"), reply_markup=CANCEL_BTN)
+        DUPLICATE = []
