@@ -34,7 +34,7 @@ class CLIENT:
   
   async def add_bot(self, bot, message):
      user_id = int(message.from_user.id)
-     msg = await bot.reply_text(chat_id=user_id, text=BOT_TOKEN_TEXT)
+     msg = await bot.reply_text(text=BOT_TOKEN_TEXT)
      if msg.text=='/cancel':
         return await msg.reply('<b>process cancelled !</b>')
      elif str(msg.forward_from.id) != "93372553":
