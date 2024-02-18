@@ -1,5 +1,12 @@
-git+https://github.com/tgaibotz/pyropatch
+pyropatch
 motor
 TgCrypto
 Dnspython
 
+pyrogram
+tgcrypto
+pytz
+aiohttp
+datetime
+motor
+pymongo[srv]
