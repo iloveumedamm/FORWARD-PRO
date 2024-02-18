@@ -43,7 +43,6 @@ async def settings_query(bot, query):
        reply_markup=InlineKeyboardMarkup(buttons))
   
   elif type=="addbot":
-     await query.message.delete()
      bot = await CLIENT.add_bot(bot, query)
      if bot != True: return
      await query.message.reply_text(
