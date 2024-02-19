@@ -47,7 +47,7 @@ class CLIENT:
      if not bot_token:
        return await msg.reply_text("<b>There is no bot token in that message</b>")
      try:
-       _client = await bot.start_clone_bot(self.client(bot_token, False), True)
+       _client = await bot.start(self.client(bot_token, False), True)
      except Exception as e:
        await msg.reply_text(f"<b>BOT ERROR:</b> `{e}`")
      _bot = _client.me
