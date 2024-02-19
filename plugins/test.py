@@ -5,7 +5,7 @@ import asyncio
 import logging 
 from database import db 
 from config import Config, temp
-from .test import CLIENT 
+
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message 
 from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
