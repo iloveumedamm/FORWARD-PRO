@@ -5,6 +5,7 @@ import asyncio
 import logging 
 from database import db 
 from config import Config, temp
+from .test import CLIENT 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message 
 from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
@@ -46,7 +47,7 @@ class CLIENT:
      if not bot_token:
        return await msg.reply_text("<b>There is no bot token in that message</b>")
      try:
-       _client = await client.start_clone_bot(self.client(bot_token, False), True)
+       _client = await bot.start_clone_bot(self.client(bot_token, False), True)
      except Exception as e:
        await msg.reply_text(f"<b>BOT ERROR:</b> `{e}`")
      _bot = _client.me
